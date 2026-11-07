@@ -1,0 +1,723 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Diwali My Babu ❤️</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Georgia, serif;
+  color: #fff5d6;
+  background:
+    radial-gradient(circle at top, #71391f, transparent 55%),
+    linear-gradient(145deg, #160b13, #32101b, #100a12);
+  overflow-x: hidden;
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  padding: 30px 18px;
+  max-width: 650px;
+  margin: auto;
+}
+
+.top-label {
+  color: #f5c96b;
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+h1 {
+  font-size: clamp(32px, 8vw, 48px);
+  color: #ffe4a0;
+  text-shadow: 0 0 20px #e9a33c;
+  margin: 25px 0 12px;
+}
+
+.subtitle {
+  color: #f8d8b0;
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+.diyas {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin: 35px 0;
+  font-size: 48px;
+}
+
+.diya {
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 5px orange);
+  }
+  to {
+    filter: drop-shadow(0 0 22px gold);
+  }
+}
+
+.card {
+  border: 1px solid #d5a64e;
+  background: rgba(67, 27, 26, 0.72);
+  border-radius: 22px;
+  padding: 27px 20px;
+  margin: 25px 0;
+  box-shadow: 0 0 30px #a15b2933;
+}
+
+.card h2 {
+  color: #ffd67e;
+  margin-bottom: 15px;
+}
+
+button {
+  border: 1px solid #ffda8b;
+  background: linear-gradient(135deg, #a85c25, #e0a63e);
+  color: #32120e;
+  padding: 13px 25px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px 5px;
+  box-shadow: 0 0 15px #e5a53b66;
+}
+
+button:active {
+  transform: scale(.95);
+}
+
+/* ENVELOPE */
+
+.envelope {
+  font-size: 85px;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.envelope:hover {
+  transform: scale(1.12);
+}
+
+#letter {
+  display: none;
+  line-height: 1.9;
+  color: #ffe9bd;
+  font-size: 17px;
+  margin-top: 20px;
+  min-height: 100px;
+}
+
+#nextBtn {
+  display: none;
+}
+
+#finalWish {
+  display: none;
+  color: #ffd47e;
+  line-height: 1.8;
+  font-size: 19px;
+  margin-top: 20px;
+}
+
+/* PHOTO FRAME */
+
+.photo-frame {
+  border: 5px double #e6b85c;
+  border-radius: 18px;
+  padding: 8px;
+  background: linear-gradient(135deg,#5a281b,#c18b36);
+  box-shadow: 0 0 25px #e6b85c66;
+  max-width: 320px;
+  margin: 20px auto;
+}
+
+.photo-frame img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  max-height: 420px;
+  object-fit: cover;
+}
+
+.patka-text {
+  color: #ffe1a0;
+  font-size: 19px;
+  line-height: 1.9;
+}
+
+.patka-title {
+  color: #ffcf68;
+  text-shadow: 0 0 12px orange;
+  font-size: 25px;
+}
+
+/* FLOATING EMOJIS */
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  animation: floatUp 7s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+footer {
+  color: #d7a76a;
+  padding: 30px 10px;
+  font-size: 13px;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<div class="container">
+
+  <!-- OPENING -->
+
+  <div class="top-label">
+    ✨ A LITTLE FESTIVAL SURPRISE ✨
+  </div>
+
+  <h1>
+    Good Morning,<br>
+    My Babu ❤️
+  </h1>
+
+  <p class="subtitle">
+    A beautiful morning, a beautiful festival<br>
+    and a little surprise made just for you. 🌸
+  </p>
+
+  <div class="diyas">
+    <span class="diya">🪔</span>
+    <span class="diya">✨</span>
+    <span class="diya">🪔</span>
+  </div>
+
+  <!-- MORNING WISH -->
+
+  <div class="card">
+    <h2>🌞 A Special Morning Wish</h2>
+
+    <p class="subtitle">
+      May your morning begin with happiness,<br>
+      your day shine with positivity,<br>
+      and your life always be filled with beautiful moments. ❤️
+    </p>
+  </div>
+
+  <!-- DIWALI WISH -->
+
+  <div class="card">
+    <h2>🪔 Happy Diwali, Babu!</h2>
+
+    <p class="subtitle">
+      May this Diwali bring endless happiness,<br>
+      success, peace and lots of smiles into your life.<br>
+      May every diya light up a new reason to smile. ❤️
+    </p>
+
+    <div style="font-size:45px;margin:20px">
+      🪔 ✨ 🪔
+    </div>
+  </div>
+
+  <!-- LOVE LETTER -->
+
+  <div class="card">
+
+    <h2>💌 A Little Letter For You</h2>
+
+    <p class="subtitle">
+      Someone has a little surprise for you...
+    </p>
+
+    <div class="envelope" onclick="openLetter()">
+      💌
+    </div>
+
+    <p class="subtitle">
+      Tap the envelope to open it
+    </p>
+
+    <div id="letter"></div>
+
+    <button id="nextBtn" onclick="nextLine()">
+      Next Line ❤️
+    </button>
+
+    <div id="finalWish">
+
+      <h2>Happy Diwali, My Babu! 🪔</h2>
+
+      <p>
+        Keep smiling, keep shining<br>
+        and never stop being your wonderful self. ❤️
+      </p>
+
+      <div style="font-size:45px;margin-top:15px">
+        🦋 💗 🦋
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FAMILY WISH -->
+
+  <div class="card">
+
+    <h2>👨‍👩‍👧‍👦 For Your Family</h2>
+
+    <p class="subtitle">
+      Tumhare pure parivaar ko meri taraf se
+      <br>
+      dher saari Happy Diwali! 🪔✨
+      <br><br>
+      Aap sabki zindagi khushiyon, sukoon,
+      achhi sehat aur prosperity se bhari rahe.
+      <br><br>
+      Sabko meri taraf se Diwali ki dher saari shubhkamnayein. ❤️
+    </p>
+
+  </div>
+
+  <!-- LADOO MESSAGE -->
+
+  <div class="card">
+
+    <h2>😂 Ek Aur Baat!</h2>
+
+    <p class="subtitle">
+      Aur haan, uss Ladoo ko bhi
+      <br>
+      meri taraf se HAPPY DIWALI bol dena! 😂❤️
+      <br><br>
+      Usko bhi meri taraf se dher saara pyaar! 💗
+    </p>
+
+  </div>
+
+  <!-- CARE MESSAGE -->
+
+  <div class="card">
+
+    <h2>🥺 Please Take Care</h2>
+
+    <p class="subtitle">
+      Patakhe aaram se phodna meri Babu.
+      <br><br>
+      Chot mat lagwa lena please! 🥺❤️
+      <br><br>
+      Safety ka dhyan rakhna aur apna bahut saara khayal rakhna.
+      <br>
+      Tumhari smile bahut precious hai. 🌸
+    </p>
+
+  </div>
+
+  <!-- I LOVE YOU -->
+
+  <div class="card">
+
+    <h2>❤️ One Last Thing...</h2>
+
+    <p class="subtitle">
+      Tum mere liye bahut special ho meri Babu.
+      <br><br>
+      I LOVE YOU SO MUCH! ❤️🫶
+      <br><br>
+      Hamesha khush rehna aur muskurate rehna.
+    </p>
+
+    <div style="font-size:45px;margin:15px">
+      ❤️ 🦋 ❤️
+    </div>
+
+  </div>
+
+  <!-- FINAL DIWALI WISH -->
+
+  <div class="card">
+
+    <h2>✨ Once Again...</h2>
+
+    <h1 style="font-size:32px">
+      Happy Diwali<br>
+      Meri Babu! 🪔
+    </h1>
+
+    <p class="subtitle">
+      Made with lots of wishes and love.
+      <br>
+      Especially for you! ❤️
+    </p>
+
+  </div>
+
+  <!-- LAST TWO: PHOTO AND FUNNY DIALOGUE -->
+
+  <div class="card">
+
+    <div class="top-label">
+      🎁 ONE LAST SURPRISE 🎁
+    </div>
+
+    <h2>Waittt Meri Babu! 😂❤️</h2>
+
+    <div class="photo-frame">
+      <img src="babu.jpg" alt="My Babu">
+    </div>
+
+    <h2 class="patka-title">
+      OYE MERI PATKHA! 😂
+    </h2>
+
+    <p class="patka-text">
+      Diwali raat mein manate hain... 🪔
+      <br><br>
+      Par tum toh abhi se patakha banke
+      ghoom rahi ho! 😂❤️
+    </p>
+
+    <p style="margin-top:18px;color:#ffd47e">
+      My cutest little firecracker! 💗
+    </p>
+
+    <div style="font-size:40px;margin-top:20px">
+      😂 🪔 ❤️
+    </div>
+
+  </div>
+
+  <!-- MAGIC AND MUSIC BUTTONS -->
+
+  <button onclick="celebrate()">
+    🎆 Click For Diwali Magic
+  </button>
+
+  <button onclick="toggleMusic()" id="musicBtn">
+    🔊 MUSIC ON
+  </button>
+
+  <footer>
+    Made with lots of wishes & love ❤️<br>
+    Especially for My Babu 🪔
+  </footer>
+
+</div>
+
+<!-- MUSIC -->
+
+<audio id="music" loop>
+  <source src="piano.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+// LOVE LETTER
+
+const lines = [
+
+  "Good morning meri Babu! 🌸",
+
+  "Sabse pehle tumhe ek pyari si Good Morning. ☀️",
+
+  "Aaj ka din tumhare liye bahut special aur khushiyon se bhara ho.",
+
+  "Is Diwali tumhari life mein sirf happiness aur positivity aaye. 🪔",
+
+  "Tumhari har chhoti-badi wish poori ho.",
+
+  "Tum hamesha aise hi muskurati raho. 💗",
+
+  "Aur haan meri Babu, apna khayal rakhna mat bhoolna!",
+
+  "Patakhe aaram se phodna aur please chot mat lagwa lena. 🥺❤️",
+
+  "Safety ka dhyan rakhna, mujhe tumhari fikr rehti hai.",
+
+  "Aur uss Ladoo ko bhi meri taraf se HAPPY DIWALI bol dena! 😂❤️",
+
+  "Tumhare pure parivaar ko meri taraf se dher saari Happy Diwali! 🪔✨",
+
+  "Aap sabki zindagi khushiyon aur sukoon se bhari rahe. 🌸",
+
+  "Tum mere liye bahut special ho meri Babu.",
+
+  "I LOVE YOU SO MUCH, MERI BABU! ❤️🫶",
+
+  "Once again, Happy Diwali meri sabse pyari Babu! 💗"
+
+];
+
+let currentLine = 0;
+
+function openLetter() {
+
+  document.querySelector(".envelope").style.transform =
+    "scale(0.85)";
+
+  document.getElementById("letter").style.display =
+    "block";
+
+  document.getElementById("nextBtn").style.display =
+    "inline-block";
+
+  currentLine = 0;
+
+  showLine();
+
+  document.getElementById("music").play().then(() => {
+
+    playing = true;
+
+    document.getElementById("musicBtn").innerText =
+      "🔊 MUSIC ON";
+
+  }).catch(() => {});
+
+}
+
+function showLine() {
+
+  document.getElementById("letter").innerText =
+    lines[currentLine];
+
+}
+
+function nextLine() {
+
+  currentLine++;
+
+  if(currentLine < lines.length) {
+
+    showLine();
+
+  } else {
+
+    document.getElementById("nextBtn").style.display =
+      "none";
+
+    document.getElementById("finalWish").style.display =
+      "block";
+
+    celebrate();
+
+  }
+
+}
+
+// MUSIC CONTROL
+
+let playing = false;
+
+function toggleMusic() {
+
+  const music = document.getElementById("music");
+
+  const btn = document.getElementById("musicBtn");
+
+  if(!playing) {
+
+    music.play().then(() => {
+
+      playing = true;
+
+      btn.innerText = "🔊 MUSIC ON";
+
+    }).catch(() => {
+
+      btn.innerText = "Tap again to play";
+
+    });
+
+  } else {
+
+    music.pause();
+
+    playing = false;
+
+    btn.innerText = "🔇 MUSIC OFF";
+
+  }
+
+}
+
+// FLOATING HEARTS AND BUTTERFLIES
+
+function createHeart() {
+
+  const heart = document.createElement("div");
+
+  heart.className = "heart";
+
+  heart.innerHTML = [
+    "❤️","💗","✨","🌸","🦋","💛"
+  ][Math.floor(Math.random()*6)];
+
+  heart.style.left = Math.random()*100 + "vw";
+
+  heart.style.fontSize =
+    (15+Math.random()*20) + "px";
+
+  heart.style.animationDuration =
+    (5+Math.random()*5) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 10000);
+
+}
+
+setInterval(createHeart, 700);
+
+// FIREWORKS
+
+const canvas = document.getElementById("fireworks");
+
+const ctx = canvas.getContext("2d");
+
+function resize() {
+
+  canvas.width = window.innerWidth;
+
+  canvas.height = window.innerHeight;
+
+}
+
+resize();
+
+window.addEventListener("resize", resize);
+
+let particles = [];
+
+function burst(x,y) {
+
+  for(let i=0; i<65; i++) {
+
+    const angle = Math.random()*Math.PI*2;
+
+    const speed = Math.random()*5+1;
+
+    particles.push({
+
+      x,y,
+
+      vx: Math.cos(angle)*speed,
+
+      vy: Math.sin(angle)*speed,
+
+      life: 70,
+
+      size: Math.random()*3+1,
+
+      color: [
+        "#ffd700",
+        "#ffb347",
+        "#ff6b6b",
+        "#fff0b3"
+      ][Math.floor(Math.random()*4)]
+
+    });
+
+  }
+
+}
+
+function animate() {
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach((p,i) => {
+
+    p.x += p.vx;
+
+    p.y += p.vy;
+
+    p.vy += 0.035;
+
+    p.life--;
+
+    ctx.globalAlpha = Math.max(0,p.life/70);
+
+    ctx.fillStyle = p.color;
+
+    ctx.beginPath();
+
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+
+    ctx.fill();
+
+    if(p.life <= 0) {
+
+      particles.splice(i,1);
+
+    }
+
+  });
+
+  ctx.globalAlpha = 1;
+
+  requestAnimationFrame(animate);
+
+}
+
+animate();
+
+function celebrate() {
+
+  for(let i=0; i<6; i++) {
+
+    setTimeout(() => {
+
+      burst(
+        Math.random()*canvas.width,
+        Math.random()*canvas.height*0.65
+      );
+
+    }, i*350);
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
