@@ -4,199 +4,316 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Diwali My Babu ❤️</title>
+<title>For My Kittu ❤️</title>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <style>
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body {
-  min-height: 100vh;
-  font-family: Georgia, serif;
-  color: #fff5d6;
-  background:
-    radial-gradient(circle at top, #71391f, transparent 55%),
-    linear-gradient(145deg, #160b13, #32101b, #100a12);
-  overflow-x: hidden;
-  text-align: center;
+  min-height:100vh;
+  font-family:Georgia,serif;
+  overflow-x:hidden;
+  color:white;
+  background:#180d19;
+  text-align:center;
+}
+
+.page {
+  display:none;
+  min-height:100vh;
+  padding:35px 18px 110px;
+  animation:fade .6s ease;
+}
+
+.page.active {
+  display:block;
+}
+
+@keyframes fade {
+  from {opacity:0;transform:translateX(18px)}
+  to {opacity:1;transform:translateX(0)}
 }
 
 .container {
-  position: relative;
-  z-index: 2;
-  padding: 30px 18px;
-  max-width: 650px;
-  margin: auto;
-}
-
-.top-label {
-  color: #f5c96b;
-  letter-spacing: 4px;
-  font-size: 12px;
-  margin-top: 20px;
+  max-width:600px;
+  margin:auto;
 }
 
 h1 {
-  font-size: clamp(32px, 8vw, 48px);
-  color: #ffe4a0;
-  text-shadow: 0 0 20px #e9a33c;
-  margin: 25px 0 12px;
+  font-size:clamp(32px,8vw,45px);
+  margin:25px 0;
 }
 
-.subtitle {
-  color: #f8d8b0;
-  line-height: 1.9;
-  font-size: 16px;
+h2 {
+  margin-bottom:18px;
 }
 
-.diyas {
-  display: flex;
-  justify-content: center;
-  gap: 28px;
-  margin: 35px 0;
-  font-size: 48px;
-}
-
-.diya {
-  animation: glow 1.5s infinite alternate;
-}
-
-@keyframes glow {
-  from {
-    filter: drop-shadow(0 0 5px orange);
-  }
-  to {
-    filter: drop-shadow(0 0 22px gold);
-  }
+p {
+  line-height:1.9;
+  font-size:16px;
 }
 
 .card {
-  border: 1px solid #d5a64e;
-  background: rgba(67, 27, 26, 0.72);
-  border-radius: 22px;
-  padding: 27px 20px;
-  margin: 25px 0;
-  box-shadow: 0 0 30px #a15b2933;
-}
-
-.card h2 {
-  color: #ffd67e;
-  margin-bottom: 15px;
+  padding:28px 20px;
+  border-radius:23px;
+  margin:25px 0;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.25);
 }
 
 button {
-  border: 1px solid #ffda8b;
-  background: linear-gradient(135deg, #a85c25, #e0a63e);
-  color: #32120e;
-  padding: 13px 25px;
-  border-radius: 30px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 10px 5px;
-  box-shadow: 0 0 15px #e5a53b66;
+  border:0;
+  padding:13px 24px;
+  border-radius:30px;
+  font-size:15px;
+  font-weight:bold;
+  margin:9px 5px;
+  cursor:pointer;
+  transition:.25s;
 }
 
 button:active {
-  transform: scale(.95);
+  transform:scale(.94);
 }
 
-/* ENVELOPE */
+.navigation {
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  padding:12px;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(12px);
+  z-index:20;
+}
+
+.navigation button {
+  background:linear-gradient(135deg,#ff8fbd,#ffc6dc);
+  color:#64183e;
+  min-width:105px;
+}
+
+.navigation button:disabled {
+  opacity:.35;
+}
+
+/* PAGE 1 PINK */
+
+.theme1 {
+  background:linear-gradient(145deg,#ffd6e7,#f5a9ca,#d979a7);
+  color:#632343;
+}
+
+.theme1 button {
+  background:#fff0f7;
+  color:#9b3269;
+}
+
+/* PAGE 2 PEACH */
+
+.theme2 {
+  background:linear-gradient(145deg,#ffe3ca,#ffb78e,#f08c83);
+  color:#63372b;
+}
+
+/* PAGE 3 DIWALI */
+
+.theme3 {
+  background:
+  radial-gradient(circle at top,#71391f,transparent 55%),
+  linear-gradient(145deg,#160b13,#32101b,#100a12);
+  color:#fff1c7;
+}
+
+.theme3 h1,.theme3 h2 {
+  color:#ffdb85;
+  text-shadow:0 0 15px orange;
+}
+
+/* PAGE 4 LETTER */
+
+.theme4 {
+  background:linear-gradient(145deg,#ffb9d5,#e98bbd,#a86ab1);
+  color:#5d2049;
+}
 
 .envelope {
-  font-size: 85px;
-  cursor: pointer;
-  transition: .4s;
+  font-size:90px;
+  cursor:pointer;
+  margin:25px;
+  animation:float 2s infinite alternate;
 }
 
-.envelope:hover {
-  transform: scale(1.12);
+@keyframes float {
+  to {transform:translateY(-10px)}
 }
 
 #letter {
-  display: none;
-  line-height: 1.9;
-  color: #ffe9bd;
-  font-size: 17px;
-  margin-top: 20px;
-  min-height: 100px;
+  min-height:100px;
+  line-height:2;
+  font-size:19px;
+  margin:20px 0;
+  font-weight:bold;
 }
 
-#nextBtn {
-  display: none;
+#letterControls {
+  display:none;
 }
 
-#finalWish {
-  display: none;
-  color: #ffd47e;
-  line-height: 1.8;
-  font-size: 19px;
-  margin-top: 20px;
+/* PAGE 5 FAMILY */
+
+.theme5 {
+  background:linear-gradient(145deg,#f8d58b,#d99a54,#ad653e);
+  color:#442415;
 }
 
-/* PHOTO FRAME */
+/* PAGE 6 LADOO */
+
+.theme6 {
+  background:linear-gradient(145deg,#ffdb9d,#ffacb5,#f17f9b);
+  color:#642c40;
+}
+
+/* PAGE 7 TAKE CARE */
+
+.theme7 {
+  background:linear-gradient(145deg,#d8d5ff,#a9c7fa,#a5e5e5);
+  color:#273b67;
+}
+
+/* PAGE 8 PIN */
+
+.theme8 {
+  background:radial-gradient(circle,#35205c,#110d25,#080610);
+  color:#f1d9ff;
+}
+
+.pin-input {
+  width:90%;
+  max-width:280px;
+  padding:17px;
+  border-radius:15px;
+  border:2px solid #bc81ff;
+  background:#211536;
+  color:white;
+  font-size:25px;
+  text-align:center;
+  letter-spacing:9px;
+  outline:none;
+  margin:20px 0;
+}
+
+.pin-button {
+  background:linear-gradient(135deg,#a75cff,#e1a6ff);
+  color:#220c38;
+}
+
+#pinMessage {
+  min-height:55px;
+  color:#ffb5d2;
+  font-weight:bold;
+}
+
+/* PAGE 9 LOVE */
+
+.theme9 {
+  background:linear-gradient(145deg,#5b101e,#b52845,#e65d78);
+  color:#fff1ec;
+}
+
+.theme9 h1 {
+  text-shadow:0 0 20px pink;
+}
+
+/* PAGE 10 QUESTION */
+
+.theme10 {
+  background:linear-gradient(145deg,#ffd0e4,#f49bc7,#c17bc4);
+  color:#62264f;
+}
+
+.yes-button {
+  background:#ff4c91;
+  color:white;
+}
+
+.no-button {
+  background:#fff;
+  color:#8a2860;
+  position:relative;
+}
+
+#noArea {
+  position:relative;
+  min-height:100px;
+  overflow:hidden;
+}
+
+#answerMessage {
+  margin-top:20px;
+  font-weight:bold;
+  min-height:55px;
+}
+
+/* PAGE 11 FINAL */
+
+.theme11 {
+  background:linear-gradient(145deg,#25102d,#753044,#e29b56);
+  color:#fff1d2;
+}
 
 .photo-frame {
-  border: 5px double #e6b85c;
-  border-radius: 18px;
-  padding: 8px;
-  background: linear-gradient(135deg,#5a281b,#c18b36);
-  box-shadow: 0 0 25px #e6b85c66;
-  max-width: 320px;
-  margin: 20px auto;
+  border:5px double gold;
+  border-radius:20px;
+  padding:8px;
+  max-width:300px;
+  margin:25px auto;
+  background:#6a341e;
+  box-shadow:0 0 30px #ffc45c;
 }
 
 .photo-frame img {
-  width: 100%;
-  display: block;
-  border-radius: 12px;
-  max-height: 420px;
-  object-fit: cover;
+  width:100%;
+  max-height:400px;
+  object-fit:cover;
+  border-radius:12px;
+  display:block;
 }
 
-.patka-text {
-  color: #ffe1a0;
-  font-size: 19px;
-  line-height: 1.9;
+#fireworks {
+  position:fixed;
+  inset:0;
+  z-index:10;
+  pointer-events:none;
 }
-
-.patka-title {
-  color: #ffcf68;
-  text-shadow: 0 0 12px orange;
-  font-size: 25px;
-}
-
-/* FLOATING EMOJIS */
 
 .heart {
-  position: fixed;
-  bottom: -30px;
-  animation: floatUp 7s linear infinite;
-  pointer-events: none;
-  z-index: 1;
+  position:fixed;
+  bottom:-30px;
+  z-index:2;
+  pointer-events:none;
+  animation:rise 7s linear forwards;
 }
 
-@keyframes floatUp {
+@keyframes rise {
   to {
-    transform: translateY(-110vh) rotate(360deg);
-    opacity: 0;
+    transform:translateY(-110vh) rotate(360deg);
+    opacity:0;
   }
 }
 
-footer {
-  color: #d7a76a;
-  padding: 30px 10px;
-  font-size: 13px;
-}
-
-canvas {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
+.small {
+  font-size:13px;
+  opacity:.8;
+  margin-top:18px;
 }
 </style>
 </head>
@@ -205,337 +322,494 @@ canvas {
 
 <canvas id="fireworks"></canvas>
 
+<!-- PAGE 1 -->
+
+<section class="page theme1 active">
 <div class="container">
 
-  <!-- OPENING -->
+<p>✨ A LITTLE SURPRISE FOR YOU ✨</p>
 
-  <div class="top-label">
-    ✨ A LITTLE FESTIVAL SURPRISE ✨
-  </div>
+<h1>Good Morning,<br>My Kittu ❤️</h1>
 
-  <h1>
-    Good Morning,<br>
-    My Babu ❤️
-  </h1>
+<p>
+A beautiful morning, a beautiful festival
+<br>
+and a little surprise made just for you. 🌸
+</p>
 
-  <p class="subtitle">
-    A beautiful morning, a beautiful festival<br>
-    and a little surprise made just for you. 🌸
-  </p>
+<div style="font-size:65px;margin:35px">
+🌸 🦋 💗
+</div>
 
-  <div class="diyas">
-    <span class="diya">🪔</span>
-    <span class="diya">✨</span>
-    <span class="diya">🪔</span>
-  </div>
+<div class="card">
+<h2>Someone Special Is Waiting...</h2>
+<p>
+This little website has been made with lots of wishes,
+care and happiness, especially for you! ❤️
+</p>
+</div>
 
-  <!-- MORNING WISH -->
+</div>
+</section>
 
-  <div class="card">
-    <h2>🌞 A Special Morning Wish</h2>
+<!-- PAGE 2 -->
 
-    <p class="subtitle">
-      May your morning begin with happiness,<br>
-      your day shine with positivity,<br>
-      and your life always be filled with beautiful moments. ❤️
-    </p>
-  </div>
+<section class="page theme2">
+<div class="container">
 
-  <!-- DIWALI WISH -->
+<h1>🌞 A Special Morning Wish</h1>
 
-  <div class="card">
-    <h2>🪔 Happy Diwali, Babu!</h2>
+<div class="card">
+<p>
+May your morning begin with happiness,
+<br>
+your day shine with positivity,
+<br>
+and your life always be filled with beautiful moments. ❤️
+<br><br>
+Kittu, keep smiling and keep shining! 🌸
+</p>
+</div>
 
-    <p class="subtitle">
-      May this Diwali bring endless happiness,<br>
-      success, peace and lots of smiles into your life.<br>
-      May every diya light up a new reason to smile. ❤️
-    </p>
+<div style="font-size:65px">☀️ 🌷 🦋</div>
 
-    <div style="font-size:45px;margin:20px">
-      🪔 ✨ 🪔
-    </div>
-  </div>
+</div>
+</section>
 
-  <!-- LOVE LETTER -->
+<!-- PAGE 3 -->
 
-  <div class="card">
+<section class="page theme3">
+<div class="container">
 
-    <h2>💌 A Little Letter For You</h2>
+<p>✨ FESTIVAL OF LIGHTS ✨</p>
 
-    <p class="subtitle">
-      Someone has a little surprise for you...
-    </p>
+<h1>Happy Diwali,<br>My Kittu! 🪔</h1>
 
-    <div class="envelope" onclick="openLetter()">
-      💌
-    </div>
+<div style="font-size:65px;margin:30px">
+🪔 ✨ 🪔
+</div>
 
-    <p class="subtitle">
-      Tap the envelope to open it
-    </p>
+<div class="card">
+<p>
+May this Diwali bring endless happiness,
+success, peace and lots of smiles into your life.
+<br><br>
+May every diya light up a new reason to smile. ❤️
+</p>
+</div>
 
-    <div id="letter"></div>
+</div>
+</section>
 
-    <button id="nextBtn" onclick="nextLine()">
-      Next Line ❤️
-    </button>
+<!-- PAGE 4 LETTER -->
 
-    <div id="finalWish">
+<section class="page theme4">
+<div class="container">
 
-      <h2>Happy Diwali, My Babu! 🪔</h2>
+<h1>💌 A Little Letter</h1>
 
-      <p>
-        Keep smiling, keep shining<br>
-        and never stop being your wonderful self. ❤️
-      </p>
+<div class="card">
 
-      <div style="font-size:45px;margin-top:15px">
-        🦋 💗 🦋
-      </div>
+<p>Someone has something special to tell you...</p>
 
-    </div>
+<div class="envelope" onclick="openLetter()">💌</div>
 
-  </div>
+<p>Tap the envelope to open it ❤️</p>
 
-  <!-- FAMILY WISH -->
+<div id="letter"></div>
 
-  <div class="card">
+<div id="letterControls">
+<button onclick="nextLine()" style="background:#fff;color:#9d3d75">
+Next Line ❤️
+</button>
+</div>
 
-    <h2>👨‍👩‍👧‍👦 For Your Family</h2>
+<div id="letterFinished" style="display:none">
+<h2>That's all for now! 💗</h2>
+<p>There is more waiting for you...</p>
+</div>
 
-    <p class="subtitle">
-      Tumhare pure parivaar ko meri taraf se
-      <br>
-      dher saari Happy Diwali! 🪔✨
-      <br><br>
-      Aap sabki zindagi khushiyon, sukoon,
-      achhi sehat aur prosperity se bhari rahe.
-      <br><br>
-      Sabko meri taraf se Diwali ki dher saari shubhkamnayein. ❤️
-    </p>
+</div>
+</div>
+</section>
 
-  </div>
+<!-- PAGE 5 FAMILY -->
 
-  <!-- LADOO MESSAGE -->
+<section class="page theme5">
+<div class="container">
 
-  <div class="card">
+<h1>👨‍👩‍👧‍👦 For Your Family</h1>
 
-    <h2>😂 Ek Aur Baat!</h2>
+<div class="card">
+<p>
+Tumhare pure parivaar ko meri taraf se
+<br>
+dher saari Happy Diwali! 🪔✨
+<br><br>
+Aap sabki zindagi khushiyon, sukoon,
+achhi sehat aur prosperity se bhari rahe.
+<br><br>
+Sabko meri taraf se Diwali ki dher saari shubhkamnayein. ❤️
+</p>
+</div>
 
-    <p class="subtitle">
-      Aur haan, uss Ladoo ko bhi
-      <br>
-      meri taraf se HAPPY DIWALI bol dena! 😂❤️
-      <br><br>
-      Usko bhi meri taraf se dher saara pyaar! 💗
-    </p>
+<div style="font-size:55px">🏡 🌸 🪔</div>
 
-  </div>
+</div>
+</section>
 
-  <!-- CARE MESSAGE -->
+<!-- PAGE 6 LADOO -->
 
-  <div class="card">
+<section class="page theme6">
+<div class="container">
 
-    <h2>🥺 Please Take Care</h2>
+<h1>😂 Ek Aur Baat!</h1>
 
-    <p class="subtitle">
-      Patakhe aaram se phodna meri Babu.
-      <br><br>
-      Chot mat lagwa lena please! 🥺❤️
-      <br><br>
-      Safety ka dhyan rakhna aur apna bahut saara khayal rakhna.
-      <br>
-      Tumhari smile bahut precious hai. 🌸
-    </p>
+<div class="card">
+<div style="font-size:70px">🍬</div>
+<p>
+Aur haan, uss Ladoo ko bhi
+<br>
+meri taraf se HAPPY DIWALI bol dena! 😂❤️
+<br><br>
+Usko bhi meri taraf se dher saara pyaar! 💗
+</p>
+</div>
 
-  </div>
+</div>
+</section>
 
-  <!-- I LOVE YOU -->
+<!-- PAGE 7 CARE -->
 
-  <div class="card">
+<section class="page theme7">
+<div class="container">
 
-    <h2>❤️ One Last Thing...</h2>
+<h1>🥺 Please Take Care</h1>
 
-    <p class="subtitle">
-      Tum mere liye bahut special ho meri Babu.
-      <br><br>
-      I LOVE YOU SO MUCH! ❤️🫶
-      <br><br>
-      Hamesha khush rehna aur muskurate rehna.
-    </p>
+<div style="font-size:65px">🦋 💙 🦋</div>
 
-    <div style="font-size:45px;margin:15px">
-      ❤️ 🦋 ❤️
-    </div>
+<div class="card">
+<p>
+Patakhe aaram se phodna meri Kittu.
+<br><br>
+Chot mat lagwa lena please! 🥺❤️
+<br><br>
+Safety ka dhyan rakhna aur apna bahut saara khayal rakhna.
+<br><br>
+Tumhari smile bahut precious hai. 🌸
+</p>
+</div>
 
-  </div>
+</div>
+</section>
 
-  <!-- FINAL DIWALI WISH -->
+<!-- PAGE 8 SECRET PIN -->
 
-  <div class="card">
+<section class="page theme8" id="pinPage">
+<div class="container">
 
-    <h2>✨ Once Again...</h2>
+<h1>🔐 Secret Surprise</h1>
 
-    <h1 style="font-size:32px">
-      Happy Diwali<br>
-      Meri Babu! 🪔
-    </h1>
+<div style="font-size:65px">🔒 💜 🔑</div>
 
-    <p class="subtitle">
-      Made with lots of wishes and love.
-      <br>
-      Especially for you! ❤️
-    </p>
+<div class="card">
 
-  </div>
+<h2>Only For My Kittu ❤️</h2>
 
-  <!-- LAST TWO: PHOTO AND FUNNY DIALOGUE -->
+<p>
+Aage badhne ke liye secret 7-digit PIN enter karo.
+<br>
+Let's see if you know it! 😏
+</p>
 
-  <div class="card">
+<input
+type="password"
+id="pinInput"
+class="pin-input"
+maxlength="7"
+inputmode="numeric"
+pattern="[0-9]*"
+placeholder="•••••••"
+>
 
-    <div class="top-label">
-      🎁 ONE LAST SURPRISE 🎁
-    </div>
+<br>
 
-    <h2>Waittt Meri Babu! 😂❤️</h2>
+<button class="pin-button" onclick="checkPIN()">
+UNLOCK ❤️
+</button>
 
-    <div class="photo-frame">
-      <img src="babu.jpg" alt="My Babu">
-    </div>
+<p id="pinMessage"></p>
 
-    <h2 class="patka-title">
-      OYE MERI PATKHA! 😂
-    </h2>
+</div>
 
-    <p class="patka-text">
-      Diwali raat mein manate hain... 🪔
-      <br><br>
-      Par tum toh abhi se patakha banke
-      ghoom rahi ho! 😂❤️
-    </p>
+</div>
+</section>
 
-    <p style="margin-top:18px;color:#ffd47e">
-      My cutest little firecracker! 💗
-    </p>
+<!-- PAGE 9 I LOVE YOU -->
 
-    <div style="font-size:40px;margin-top:20px">
-      😂 🪔 ❤️
-    </div>
+<section class="page theme9">
+<div class="container">
 
-  </div>
+<div style="font-size:75px">❤️</div>
 
-  <!-- MAGIC AND MUSIC BUTTONS -->
+<h1>I LOVE YOU<br>MY BABU! 🥹</h1>
 
-  <button onclick="celebrate()">
-    🎆 Click For Diwali Magic
-  </button>
+<div class="card">
+<p>
+Tum mere liye bahut special ho meri Babu.
+<br><br>
+I LOVE YOU SO MUCH! ❤️🫶
+<br><br>
+Hamesha khush rehna aur muskurate rehna.
+<br><br>
+You are my favourite person! 💗
+</p>
+</div>
 
-  <button onclick="toggleMusic()" id="musicBtn">
-    🔊 MUSIC ON
-  </button>
+<div style="font-size:55px">❤️ 🦋 ❤️</div>
 
-  <footer>
-    Made with lots of wishes & love ❤️<br>
-    Especially for My Babu 🪔
-  </footer>
+</div>
+</section>
+
+<!-- PAGE 10 QUESTION -->
+
+<section class="page theme10">
+<div class="container">
+
+<h1>🥺 One Last Question</h1>
+
+<div class="card">
+
+<div style="font-size:65px">💗 🧸 💗</div>
+
+<h2>Do you love me little bit? ❤️</h2>
+
+<p>
+Think carefully Kittu! 🙈
+<br>
+Your YES response will be emailed to Shivam.
+</p>
+
+<button class="yes-button" id="yesBtn" onclick="sendYesEmail()">
+YES ❤️
+</button>
+
+<div id="noArea">
+<button class="no-button" id="noBtn" onclick="moveNoButton()">
+NO 🙈
+</button>
+</div>
+
+<p id="answerMessage"></p>
+
+</div>
+
+</div>
+</section>
+
+<!-- PAGE 11 FINAL -->
+
+<section class="page theme11">
+<div class="container">
+
+<p>🎁 ONE LAST SURPRISE 🎁</p>
+
+<h1>Waittt Kittu! 😂❤️</h1>
+
+<div class="photo-frame">
+<img src="babu.jpg" alt="Kittu">
+</div>
+
+<h2 style="color:#ffda80;font-size:27px">
+OYE MERI PATKHA! 😂
+</h2>
+
+<div class="card">
+<p>
+Diwali raat mein manate hain... 🪔
+<br><br>
+Par tum toh abhi se patakha banke
+ghoom rahi ho! 😂❤️
+<br><br>
+My cutest little firecracker! 💗
+</p>
+</div>
+
+<div style="font-size:60px">😂 🪔 ❤️</div>
+
+<button onclick="celebrate()" style="background:gold;color:#401b0b">
+🎆 Click For Diwali Magic
+</button>
+
+<h2 style="margin-top:30px">
+Happy Diwali, Kittu! ❤️
+</h2>
+
+</div>
+</section>
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+<button id="backBtn" onclick="changePage(-1)">
+⬅ Back
+</button>
+
+<button id="nextBtn" onclick="changePage(1)">
+Next ❤️
+</button>
+
+<br>
+
+<button onclick="toggleMusic()" id="musicBtn">
+🔊 MUSIC ON
+</button>
+
+<p style="font-size:11px;color:white">
+Made with love ❤️
+</p>
 
 </div>
 
 <!-- MUSIC -->
 
 <audio id="music" loop>
-  <source src="piano.mp3" type="audio/mpeg">
+<source src="piano.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 
-// LOVE LETTER
+// PAGE NAVIGATION
 
-const lines = [
+const pages = document.querySelectorAll(".page");
 
-  "Good morning meri Babu! 🌸",
+let currentPage = 0;
+let letterOpened = false;
+let letterCompleted = false;
+let pinUnlocked = false;
+let playing = false;
 
-  "Sabse pehle tumhe ek pyari si Good Morning. ☀️",
+function updatePage() {
 
-  "Aaj ka din tumhare liye bahut special aur khushiyon se bhara ho.",
+  pages.forEach((page,index) => {
+    page.classList.toggle("active",index===currentPage);
+  });
 
-  "Is Diwali tumhari life mein sirf happiness aur positivity aaye. 🪔",
+  document.getElementById("backBtn").disabled =
+    currentPage===0;
 
-  "Tumhari har chhoti-badi wish poori ho.",
+  document.getElementById("nextBtn").disabled =
+    currentPage===3 && !letterCompleted ||
+    currentPage===7 && !pinUnlocked ||
+    currentPage===9;
 
-  "Tum hamesha aise hi muskurati raho. 💗",
+  document.getElementById("nextBtn").innerText =
+    currentPage===pages.length-1 ? "Finished ❤️" : "Next ❤️";
 
-  "Aur haan meri Babu, apna khayal rakhna mat bhoolna!",
+  window.scrollTo(0,0);
+}
 
-  "Patakhe aaram se phodna aur please chot mat lagwa lena. 🥺❤️",
+function changePage(direction) {
 
-  "Safety ka dhyan rakhna, mujhe tumhari fikr rehti hai.",
+  const next = currentPage + direction;
 
-  "Aur uss Ladoo ko bhi meri taraf se HAPPY DIWALI bol dena! 😂❤️",
+  if(next<0 || next>=pages.length) return;
 
-  "Tumhare pure parivaar ko meri taraf se dher saari Happy Diwali! 🪔✨",
+  if(currentPage===7 && !pinUnlocked) return;
 
-  "Aap sabki zindagi khushiyon aur sukoon se bhari rahe. 🌸",
+  if(currentPage===3 && !letterCompleted) return;
 
-  "Tum mere liye bahut special ho meri Babu.",
+  currentPage=next;
 
-  "I LOVE YOU SO MUCH, MERI BABU! ❤️🫶",
-
-  "Once again, Happy Diwali meri sabse pyari Babu! 💗"
-
-];
-
-let currentLine = 0;
-
-function openLetter() {
-
-  document.querySelector(".envelope").style.transform =
-    "scale(0.85)";
-
-  document.getElementById("letter").style.display =
-    "block";
-
-  document.getElementById("nextBtn").style.display =
-    "inline-block";
-
-  currentLine = 0;
-
-  showLine();
-
-  document.getElementById("music").play().then(() => {
-
-    playing = true;
-
-    document.getElementById("musicBtn").innerText =
-      "🔊 MUSIC ON";
-
-  }).catch(() => {});
+  updatePage();
 
 }
 
-function showLine() {
+updatePage();
 
-  document.getElementById("letter").innerText =
-    lines[currentLine];
+
+// LETTER
+
+const lines = [
+
+"Good morning meri Kittu! 🌸",
+
+"Sabse pehle tumhe ek pyari si Good Morning. ☀️",
+
+"Aaj ka din tumhare liye bahut special aur khushiyon se bhara ho.",
+
+"Is Diwali tumhari life mein sirf happiness aur positivity aaye. 🪔",
+
+"Tumhari har chhoti-badi wish poori ho.",
+
+"Tum hamesha aise hi muskurati raho. 💗",
+
+"Aur haan meri Kittu, apna khayal rakhna mat bhoolna!",
+
+"Patakhe aaram se phodna aur please chot mat lagwa lena. 🥺❤️",
+
+"Safety ka dhyan rakhna, mujhe tumhari fikr rehti hai.",
+
+"Aur uss Ladoo ko bhi meri taraf se HAPPY DIWALI bol dena! 😂❤️",
+
+"Tumhare pure parivaar ko meri taraf se dher saari Happy Diwali! 🪔✨",
+
+"Aap sabki zindagi khushiyon aur sukoon se bhari rahe. 🌸",
+
+"Tum mere liye bahut special ho meri Kittu.",
+
+"I LOVE YOU SO MUCH! ❤️🫶",
+
+"Once again, Happy Diwali meri sabse pyari Kittu! 💗"
+
+];
+
+let lineIndex=0;
+
+function openLetter() {
+
+  if(letterOpened) return;
+
+  letterOpened=true;
+
+  document.getElementById("letterControls").style.display="block";
+
+  document.getElementById("letter").innerText=lines[0];
+
+  lineIndex=0;
+
+  // Start music after user interaction
+  const music=document.getElementById("music");
+
+  music.play().then(()=>{
+    playing=true;
+    document.getElementById("musicBtn").innerText="🔊 MUSIC ON";
+  }).catch(()=>{});
 
 }
 
 function nextLine() {
 
-  currentLine++;
+  if(!letterOpened) return;
 
-  if(currentLine < lines.length) {
+  lineIndex++;
 
-    showLine();
+  if(lineIndex<lines.length) {
+
+    document.getElementById("letter").innerText=lines[lineIndex];
 
   } else {
 
-    document.getElementById("nextBtn").style.display =
-      "none";
+    document.getElementById("letter").style.display="none";
 
-    document.getElementById("finalWish").style.display =
-      "block";
+    document.getElementById("letterControls").style.display="none";
+
+    document.getElementById("letterFinished").style.display="block";
+
+    letterCompleted=true;
+
+    updatePage();
 
     celebrate();
 
@@ -543,27 +817,148 @@ function nextLine() {
 
 }
 
-// MUSIC CONTROL
 
-let playing = false;
+// PIN SYSTEM
+
+function checkPIN() {
+
+  const pin=document.getElementById("pinInput").value;
+
+  const message=document.getElementById("pinMessage");
+
+  if(pin==="5201314") {
+
+    message.innerText="Correct PIN! Welcome meri Kittu! ❤️🔓";
+
+    pinUnlocked=true;
+
+    document.getElementById("pinInput").disabled=true;
+
+    setTimeout(()=>{
+      currentPage=8;
+      updatePage();
+      celebrate();
+    },1000);
+
+  } else {
+
+    message.innerText=
+      "Jao phle Shivam Malik se puch ke ao 😂❤️";
+
+    document.getElementById("pinInput").value="";
+
+  }
+
+}
+
+
+// EMAILJS
+
+// Verify your Service ID in EmailJS dashboard.
+// Template should have {{answer}} and {{message}}.
+// Configure its To Email as shivampal2k20@gmail.com.
+
+emailjs.init({
+  publicKey:"Em_j2-WXTIxkjpo14"
+});
+
+let emailSent=false;
+
+function sendYesEmail() {
+
+  const btn=document.getElementById("yesBtn");
+
+  const message=document.getElementById("answerMessage");
+
+  if(emailSent) {
+    message.innerText="Your YES response has already been sent! ❤️";
+    return;
+  }
+
+  btn.disabled=true;
+
+  message.innerText="Sending your YES response... 💗";
+
+  emailjs.send(
+    "1234@shivam",
+    "template_qwfsepm",
+    {
+      answer:"YES ❤️",
+      message:"Kittu clicked YES on the Do You Love Me page! 🥹❤️"
+    }
+  )
+  .then(function() {
+
+    emailSent=true;
+
+    message.innerText=
+      "Hehehe! Mujhe pata tha meri Babu mujhse pyaar karti hai! ❤️🥹";
+
+    btn.innerText="YES SENT ❤️";
+
+  })
+  .catch(function(error) {
+
+    console.log("EmailJS error:",error);
+
+    message.innerText=
+      "Email nahi ja paayi. Please try again! 🥺";
+
+    btn.disabled=false;
+
+  });
+
+}
+
+
+// NO BUTTON RUN AWAY
+
+let noCount=0;
+
+function moveNoButton() {
+
+  const btn=document.getElementById("noBtn");
+
+  const area=document.getElementById("noArea");
+
+  const message=document.getElementById("answerMessage");
+
+  noCount++;
+
+  message.innerText="Sach mei tum mujhe pyaar nahi karti? 🥺💔";
+
+  btn.style.position="absolute";
+
+  const maxX=Math.max(0,area.clientWidth-btn.offsetWidth-10);
+
+  const maxY=Math.max(0,area.clientHeight-btn.offsetHeight-10);
+
+  btn.style.left=Math.random()*maxX+"px";
+
+  btn.style.top=Math.random()*maxY+"px";
+
+}
+
+
+// MUSIC
 
 function toggleMusic() {
 
-  const music = document.getElementById("music");
+  const music=document.getElementById("music");
 
-  const btn = document.getElementById("musicBtn");
+  const btn=document.getElementById("musicBtn");
 
   if(!playing) {
 
-    music.play().then(() => {
+    music.play().then(()=>{
 
-      playing = true;
+      playing=true;
 
-      btn.innerText = "🔊 MUSIC ON";
+      btn.innerText="🔊 MUSIC ON";
 
-    }).catch(() => {
+    }).catch(()=>{
 
-      btn.innerText = "Tap again to play";
+      btn.innerText="Tap again to play";
 
     });
 
@@ -571,88 +966,84 @@ function toggleMusic() {
 
     music.pause();
 
-    playing = false;
+    playing=false;
 
-    btn.innerText = "🔇 MUSIC OFF";
+    btn.innerText="🔇 MUSIC OFF";
 
   }
 
 }
 
-// FLOATING HEARTS AND BUTTERFLIES
+
+// FLOATING HEARTS
 
 function createHeart() {
 
-  const heart = document.createElement("div");
+  const heart=document.createElement("div");
 
-  heart.className = "heart";
+  heart.className="heart";
 
-  heart.innerHTML = [
-    "❤️","💗","✨","🌸","🦋","💛"
-  ][Math.floor(Math.random()*6)];
+  const emojis=["❤️","💗","✨","🌸","🦋","💛"];
 
-  heart.style.left = Math.random()*100 + "vw";
+  heart.innerText=emojis[Math.floor(Math.random()*emojis.length)];
 
-  heart.style.fontSize =
-    (15+Math.random()*20) + "px";
+  heart.style.left=Math.random()*100+"vw";
 
-  heart.style.animationDuration =
-    (5+Math.random()*5) + "s";
+  heart.style.fontSize=(15+Math.random()*20)+"px";
+
+  heart.style.animationDuration=(5+Math.random()*5)+"s";
 
   document.body.appendChild(heart);
 
-  setTimeout(() => heart.remove(), 10000);
+  setTimeout(()=>heart.remove(),10000);
 
 }
 
-setInterval(createHeart, 700);
+setInterval(createHeart,800);
+
 
 // FIREWORKS
 
-const canvas = document.getElementById("fireworks");
+const canvas=document.getElementById("fireworks");
 
-const ctx = canvas.getContext("2d");
+const ctx=canvas.getContext("2d");
 
 function resize() {
 
-  canvas.width = window.innerWidth;
+  canvas.width=window.innerWidth;
 
-  canvas.height = window.innerHeight;
+  canvas.height=window.innerHeight;
 
 }
 
 resize();
 
-window.addEventListener("resize", resize);
+window.addEventListener("resize",resize);
 
-let particles = [];
+let particles=[];
 
 function burst(x,y) {
 
-  for(let i=0; i<65; i++) {
+  for(let i=0;i<65;i++) {
 
-    const angle = Math.random()*Math.PI*2;
+    const angle=Math.random()*Math.PI*2;
 
-    const speed = Math.random()*5+1;
+    const speed=Math.random()*5+1;
 
     particles.push({
 
       x,y,
 
-      vx: Math.cos(angle)*speed,
+      vx:Math.cos(angle)*speed,
 
-      vy: Math.sin(angle)*speed,
+      vy:Math.sin(angle)*speed,
 
-      life: 70,
+      life:70,
 
-      size: Math.random()*3+1,
+      size:Math.random()*3+1,
 
-      color: [
-        "#ffd700",
-        "#ffb347",
-        "#ff6b6b",
-        "#fff0b3"
-      ][Math.floor(Math.random()*4)]
+      color:["#ffd700","#ffb347","#ff6b6b","#fff0b3"]
+      [Math.floor(Math.random()*4)]
 
     });
 
@@ -664,19 +1055,19 @@ function animate() {
 
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  particles.forEach((p,i) => {
+  particles.forEach((p,i)=>{
 
-    p.x += p.vx;
+    p.x+=p.vx;
 
-    p.y += p.vy;
+    p.y+=p.vy;
 
-    p.vy += 0.035;
+    p.vy+=0.035;
 
     p.life--;
 
-    ctx.globalAlpha = Math.max(0,p.life/70);
+    ctx.globalAlpha=Math.max(0,p.life/70);
 
-    ctx.fillStyle = p.color;
+    ctx.fillStyle=p.color;
 
     ctx.beginPath();
 
@@ -684,15 +1075,13 @@ function animate() {
 
     ctx.fill();
 
-    if(p.life <= 0) {
-
+    if(p.life<=0) {
       particles.splice(i,1);
-
     }
 
   });
 
-  ctx.globalAlpha = 1;
+  ctx.globalAlpha=1;
 
   requestAnimationFrame(animate);
 
@@ -702,16 +1091,16 @@ animate();
 
 function celebrate() {
 
-  for(let i=0; i<6; i++) {
+  for(let i=0;i<6;i++) {
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
       burst(
         Math.random()*canvas.width,
-        Math.random()*canvas.height*0.65
+        Math.random()*canvas.height*.65
       );
 
-    }, i*350);
+    },i*350);
 
   }
 
@@ -720,4 +1109,7 @@ function celebrate() {
 </script>
 
 </body>
-</html>
+  </html>
+
+
+        
