@@ -702,7 +702,7 @@ function updatePage() {
   document.getElementById("nextBtn").disabled =
     currentPage===3 && !letterCompleted ||
     currentPage===7 && !pinUnlocked ||
-    currentPage===9;
+    currentPage===9;&& !emailSent;
 
   document.getElementById("nextBtn").innerText =
     currentPage===pages.length-1 ? "Finished ❤️" : "Next ❤️";
@@ -890,6 +890,7 @@ function sendYesEmail() {
   .then(function() {
 
     emailSent=true;
+    updatePage();
 
     message.innerText=
       "Hehehe! Mujhe pata tha meri Babu mujhse pyaar karti hai! ❤️🥹";
