@@ -689,6 +689,7 @@ let letterOpened = false;
 let letterCompleted = false;
 let pinUnlocked = false;
 let playing = false;
+let emailSent=false;
 
 function updatePage() {
 
@@ -702,7 +703,7 @@ function updatePage() {
   document.getElementById("nextBtn").disabled =
     currentPage===3 && !letterCompleted ||
     currentPage===7 && !pinUnlocked ||
-    currentPage===9;&& !emailSent;
+    currentPage===9 && !emailSent;
 
   document.getElementById("nextBtn").innerText =
     currentPage===pages.length-1 ? "Finished ❤️" : "Next ❤️";
@@ -862,7 +863,6 @@ emailjs.init({
   publicKey:"Em_j2-WXTIxkjpo14"
 });
 
-let emailSent=false;
 
 function sendYesEmail() {
 
